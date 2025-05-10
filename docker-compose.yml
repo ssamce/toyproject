@@ -1,0 +1,19 @@
+version: "3.3"
+services:
+  mysql:
+    image: mysql:8.0.41
+    env_file:
+      - .env
+    volumes:
+      - ./mysql/logs:/var/log/mysql
+      - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./mysql/init:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+
+networks:
+  default:
+    name: TOY-PROJECT
+    external: true
