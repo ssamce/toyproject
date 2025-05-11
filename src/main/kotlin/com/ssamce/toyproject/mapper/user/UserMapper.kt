@@ -17,3 +17,19 @@ fun User.toResponse(): UserDto.FormResponse =
         name = this.name,
         role = this.role
     )
+
+fun User.updateByUser(request: UserDto.UpdateRequest, encryptedPassword: String): User {
+    return this.copy(
+        name = request.name ?: this.name,
+        password = encryptedPassword
+    )
+}
+
+fun User.updateByAdmin(request: UserDto.UpdateForAdminRequest, encryptedPassword: String): User {
+    return this.copy(
+        name = request.name ?: this.name,
+        password = encryptedPassword,
+        email = request.email ?: this.email,
+        role = request.role ?: this.role
+    )
+}

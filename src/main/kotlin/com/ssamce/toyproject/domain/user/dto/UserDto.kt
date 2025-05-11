@@ -37,4 +37,16 @@ class UserDto {
         val email: String,
         val name: String
     )
+
+    data class UpdateRequest(
+        val name: String?,
+        val password: String?
+    )
+
+    data class UpdateForAdminRequest(
+        val name: String?,
+        val password: String?,
+        val email: String?,
+        val role: Role?
+    )
 }
