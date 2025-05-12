@@ -6,16 +6,16 @@ import java.time.LocalDateTime
 
 @Entity
 @Table(
-    name = "user_log",
-    indexes = [Index(name = "idx_user_log_user_id", columnList = "user_id")]
+    name = "admin_log",
+    indexes = [Index(name = "idx_admin_log_user_id", columnList = "user_id")]
 )
-class UserLog(
+class AdminLog(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false, foreignKey = ForeignKey(name = "fk_user_log_user"))
+    @JoinColumn(name = "user_id", nullable = false, foreignKey = ForeignKey(name = "fk_admin_log_user"))
     val user: User,
 
     @Column(
